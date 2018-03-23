@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Boarded</string>
+
+    <!-- HOME -->
+    <string name="title_activity_home">My Games</string>
 </resources>

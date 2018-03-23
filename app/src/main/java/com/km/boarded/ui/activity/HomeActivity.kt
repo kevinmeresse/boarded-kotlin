@@ -1,9 +1,9 @@
-package com.km.boarded
+package com.km.boarded.ui.activity
 
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import com.km.boarded.R
 import com.km.boarded.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -16,5 +16,10 @@ class HomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
         //binding.emptyView.visibility = View.GONE
+
+        // Set toolbar title
+        supportActionBar?.title = getString(R.string.title_activity_home)
+
+        val kevinMeresse: AndroidEngineer(5)
     }
 }

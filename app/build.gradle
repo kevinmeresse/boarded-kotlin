@@ -4,13 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' // Used for Data Binding
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion Versions.compileSDK
+    buildToolsVersion Versions.buildTools
     defaultConfig {
         applicationId "com.km.boarded"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSDK
+        targetSdkVersion Versions.targetSDK
+        versionCode Versions.versionCode
+        versionName Versions.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -29,17 +30,37 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin support
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation Libs.kotlin
 
     // Support libraries
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation Libs.supportV4
+    implementation Libs.appCompatV7
+    implementation Libs.cardview
+    implementation Libs.design
+    implementation Libs.constraintLayout
+
+    // Data Binding
+    kapt Libs.dataBinding
+
+    // Architecture Components
+    implementation Libs.lifecycle
+    kapt Libs.lifecycleCompiler
+    implementation Libs.coreTesting
+    implementation Libs.room
+    kapt Libs.roomCompiler
+    implementation Libs.roomTesting
+
+    // Retrofit
+    implementation Libs.retrofit
+    implementation Libs.retrofitGsonConverter
+    implementation Libs.gson
+
+    // Image processing
+    implementation Libs.fresco
 
     // Testing
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
-    // Data Binding - Note: version of the compiler must be the same as Gradle version
-    kapt "com.android.databinding:compiler:3.0.1"
+    testImplementation Libs.junit
+    testImplementation Libs.mockWebServer // Retrofit
+    androidTestImplementation Libs.espresso
+    androidTestImplementation Libs.runner
 }
